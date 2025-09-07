@@ -1,4 +1,3 @@
-// components/steps/SkillsStep.tsx
 import { useFormContext, useWatch } from 'react-hook-form';
 import { FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -9,7 +8,7 @@ import { FormData } from '@/app/page';
 import { Input } from '../ui/input';
 
 export default function SkillsStep() {
-  const { control, setValue } = useFormContext<FormData>();
+  const { control } = useFormContext<FormData>();
   const department = useWatch({ control, name: 'jobDetails.department' });
   const remotePreference = useWatch({ control, name: 'skills.remoteWorkPreference' });
   const selectedSkills = useWatch({ control, name: 'skills.primarySkills' });

@@ -1,4 +1,3 @@
-// components/steps/JobDetailsStep.tsx
 import { useFormContext, useWatch } from 'react-hook-form';
 import { FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
@@ -8,7 +7,7 @@ import { mockManagers } from '@/lib/mockData';
 import { FormData } from '@/app/page';
 
 export default function JobDetailsStep() {
-  const { control, setValue } = useFormContext<FormData>();
+  const { control } = useFormContext<FormData>();
   const department = useWatch({ control, name: 'jobDetails.department' });
   const jobType = useWatch({ control, name: 'jobDetails.jobType' });
   

@@ -1,5 +1,4 @@
-// hooks/useFormNavigation.ts
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export const useFormNavigation = (totalSteps: number) => {
   const [currentStep, setCurrentStep] = useState(0);

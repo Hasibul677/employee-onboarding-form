@@ -1,16 +1,15 @@
-// components/steps/PersonalInfoStep.tsx
 import { useFormContext } from 'react-hook-form';
 import { FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { FormData } from '@/app/page';
 
 export default function PersonalInfoStep() {
-  const { control, watch } = useFormContext<FormData>();
-  
+  const { control } = useFormContext<FormData>();
+
   return (
     <div className="space-y-6">
       <h2 className="text-xl font-semibold">Personal Information</h2>
-      
+
       <FormField
         control={control}
         name="personalInfo.fullName"
@@ -24,7 +23,7 @@ export default function PersonalInfoStep() {
           </FormItem>
         )}
       />
-      
+
       <FormField
         control={control}
         name="personalInfo.email"
@@ -38,7 +37,7 @@ export default function PersonalInfoStep() {
           </FormItem>
         )}
       />
-      
+
       <FormField
         control={control}
         name="personalInfo.phoneNumber"
@@ -52,7 +51,7 @@ export default function PersonalInfoStep() {
           </FormItem>
         )}
       />
-      
+
       <FormField
         control={control}
         name="personalInfo.dateOfBirth"
@@ -66,25 +65,29 @@ export default function PersonalInfoStep() {
           </FormItem>
         )}
       />
-      
+
       <FormField
         control={control}
         name="personalInfo.profilePicture"
-        render={({ field: { value, onChange, ...fieldProps } }) => (
+        render={({ field: { onChange, onBlur, ref, name } }) => (
           <FormItem>
             <FormLabel>Profile Picture (Optional)</FormLabel>
             <FormControl>
               <Input
                 type="file"
                 accept=".jpg,.jpeg,.png"
+                name={name}
+                onBlur={onBlur}
+                ref={ref}
                 onChange={(e) => onChange(e.target.files?.[0] || null)}
-                {...fieldProps}
               />
             </FormControl>
             <FormMessage />
           </FormItem>
         )}
       />
+
+
     </div>
   );
 }

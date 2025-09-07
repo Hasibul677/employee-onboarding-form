@@ -46,13 +46,21 @@ export default function OnboardingForm() {
     },
   });
 
-  const nextStep = async () => {
-    const fields = stepFields[currentStep];
-    const isValid = await form.trigger(fields as any);
-    if (isValid) {
-      setCurrentStep(prev => Math.min(prev + 1, steps.length - 1));
-    }
-  };
+const stepFields: (keyof FormData)[][] = [
+  ['personalInfo'],
+  ['jobDetails'],
+  ['skills'],
+  ['emergencyContact'],
+  []
+];
+
+const nextStep = async () => {
+  const fields = stepFields[currentStep];
+  const isValid = await form.trigger(fields);
+  if (isValid) {
+    setCurrentStep(prev => Math.min(prev + 1, steps.length - 1));
+  }
+};
 
   const prevStep = () => {
     setCurrentStep(prev => Math.max(prev - 1, 0));
@@ -72,13 +80,6 @@ export default function OnboardingForm() {
     }
   };
 
-  const stepFields = [
-    ['personalInfo'],
-    ['jobDetails'],
-    ['skills'],
-    ['emergencyContact'],
-    []
-  ];
 
   const renderStep = () => {
     switch (currentStep) {

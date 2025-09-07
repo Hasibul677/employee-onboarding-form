@@ -1,4 +1,3 @@
-// hooks/useFieldAnalytics.ts
 import { useEffect, useRef } from 'react';
 
 export const useFieldAnalytics = (fieldName: string) => {

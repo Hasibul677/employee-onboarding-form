@@ -1,9 +1,8 @@
-// hooks/useUnsavedChangesWarning.ts
 import { useEffect } from 'react';
-import { UseFormReturn } from 'react-hook-form';
+import { UseFormReturn, FieldValues } from 'react-hook-form';
 
-export const useUnsavedChangesWarning = (
-  form: UseFormReturn<any>,
+export const useUnsavedChangesWarning = <TFormValues extends FieldValues>(
+  form: UseFormReturn<TFormValues>,
   isEnabled: boolean = true
 ) => {
   useEffect(() => {
